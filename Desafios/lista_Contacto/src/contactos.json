@@ -1,0 +1,5 @@
+[
+  { "id": 1, "nombre": "Jose", "apellido": "Roberto", "telefono": "12345678", "favorito": false },
+  { "id": 2, "nombre": "Marta", "apellido": "Martínez", "telefono": "87654321", "favorito": true },
+  { "id": 3, "nombre": "Juan", "apellido": "Carlos", "telefono": "11223344", "favorito": false }
+]
