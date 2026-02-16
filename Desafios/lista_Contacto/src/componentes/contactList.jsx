@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Contact from "./contact";
-import contactsData from "../contacto.json";
+import contactsData from "../contactos.json";
 
 function ContactList() {
   const [contacts, setContacts] = useState([]);
@@ -59,3 +59,5 @@ function ContactList() {
     </div>
   );
 }
+
+export default ContactList;
