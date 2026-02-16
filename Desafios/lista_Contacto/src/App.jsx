@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import ContactList from "./componentes/contactList";
-import contactsData from "./contactos.json";
-import "./App.css";
+import React from "react";
+import ContactList from "./componentes/contactList"; tos
 
-function App() { 
+function App() {
   return (
-     <div className="App"> 
-     <h1>📒 Agenda de Contactos</h1> 
-     <ContactList /> </div> ); 
-     }
+    <div className="App">
+      <h1>📒 Agenda de Contactos</h1>
+      <ContactList /> 
+    </div>
+  );
+}
 
- export default App;
+export default App;
