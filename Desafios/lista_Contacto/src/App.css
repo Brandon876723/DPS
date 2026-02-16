@@ -1,45 +1,62 @@
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f6f9;
-  margin: 0;
-  padding: 0;
+  background: linear-gradient(135deg, #3498db, #6dd5fa);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+
 .app-container {
-  max-width: 600px;
-  margin: 40px auto;
+  width: 100%;
+  max-width: 500px;
   background-color: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
+
 
 h1 {
   text-align: center;
+  margin-bottom: 20px;
   color: #2c3e50;
 }
-
 
 
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 25px;
 }
 
 .form-container input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
   font-size: 14px;
+  transition: 0.3s;
+}
+
+.form-container input:focus {
+  outline: none;
+  border: 1px solid #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
 
 .form-container button {
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
   background-color: #3498db;
   color: white;
@@ -50,35 +67,38 @@ h1 {
 
 .form-container button:hover {
   background-color: #2980b9;
+  transform: scale(1.03);
 }
-
 
 
 .contact {
-  border: 1px solid #ddd;
+  background-color: #f9f9f9;
   padding: 15px;
+  border-radius: 15px;
   margin-bottom: 15px;
-  border-radius: 10px;
   transition: 0.3s;
-  background-color: #fafafa;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact:hover {
+  transform: translateY(-3px);
 }
 
 .contact h3 {
-  margin: 0;
-  color: #34495e;
+  margin-bottom: 5px;
+  color: #2c3e50;
 }
 
 .contact p {
-  margin: 5px 0 10px 0;
-  color: #555;
+  margin-bottom: 10px;
+  color: #666;
 }
-
 
 
 .contact button {
   margin-right: 8px;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   font-size: 12px;
@@ -94,6 +114,7 @@ h1 {
   background-color: #d4ac0d;
 }
 
+
 .contact button:last-of-type {
   background-color: #e74c3c;
   color: white;
@@ -104,9 +125,8 @@ h1 {
 }
 
 
-
 .favorito {
   background-color: #fff8dc;
   border: 2px solid gold;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
 }
