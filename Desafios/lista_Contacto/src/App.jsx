@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import ContactList from "./components/ContactList";
-import contactsData from "./data/contacts.json";
+import ContactList from "./componentes/contactList";
+import contactsData from "./contactos.json";
 import "./App.css";
 
 function App() {
@@ -9,12 +9,12 @@ function App() {
   const [apellido, setApellido] = useState("");
   const [telefono, setTelefono] = useState("");
 
-  // 🔹 Cargar contactos desde JSON al iniciar
+
   useEffect(() => {
     setContacts(contactsData);
   }, []);
 
-  // 🔹 Agregar contacto
+  
   const addContact = (e) => {
     e.preventDefault();
 
@@ -33,18 +33,15 @@ function App() {
 
     setContacts([...contacts, newContact]);
 
-    // Limpiar campos
     setNombre("");
     setApellido("");
     setTelefono("");
   };
 
-  // 🔹 Eliminar contacto
   const deleteContact = (id) => {
     setContacts(contacts.filter(contact => contact.id !== id));
   };
 
-  // 🔹 Agregar / Quitar favorito
   const toggleFavorite = (id) => {
     setContacts(
       contacts.map(contact =>
@@ -55,7 +52,6 @@ function App() {
     );
   };
 
-  // 🔹 Ordenar favoritos primero
   const sortedContacts = [...contacts].sort(
     (a, b) => b.favorito - a.favorito
   );
@@ -64,7 +60,6 @@ function App() {
     <div className="app-container">
       <h1>📱 Lista de Contactos</h1>
 
-      {/* FORMULARIO */}
       <form className="form-container" onSubmit={addContact}>
         <input
           type="text"
@@ -90,7 +85,6 @@ function App() {
         <button type="submit">Agregar Contacto</button>
       </form>
 
-      {/* LISTA */}
       <ContactList
         contacts={sortedContacts}
         onDelete={deleteContact}
