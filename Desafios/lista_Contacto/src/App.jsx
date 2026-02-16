@@ -1,35 +1,103 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import ContactList from "./componentes/contactList";
+import contactsData from "./contactos.json";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [contacts, setContacts] = useState([]);
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [telefono, setTelefono] = useState("");
+
+  
+  useEffect(() => {
+    setContacts(contactsData);
+  }, []);
+
+  
+  const addContact = (e) => {
+    e.preventDefault();
+
+    if (!nombre || !apellido || !telefono) {
+      alert("Todos los campos son obligatorios");
+      return;
+    }
+
+    const newContact = {
+      id: Date.now(),
+      nombre,
+      apellido,
+      telefono,
+      favorito: false
+    };
+
+    setContacts([...contacts, newContact]);
+
+    
+    setNombre("");
+    setApellido("");
+    setTelefono("");
+  };
+
+  
+  const deleteContact = (id) => {
+    setContacts(contacts.filter(contact => contact.id !== id));
+  };
+
+  
+  const toggleFavorite = (id) => {
+    setContacts(
+      contacts.map(contact =>
+        contact.id === id
+          ? { ...contact, favorito: !contact.favorito }
+          : contact
+      )
+    );
+  };
+
+  
+  const sortedContacts = [...contacts].sort(
+    (a, b) => b.favorito - a.favorito
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app-container">
+      <h1>📱 Lista de Contactos</h1>
+
+      
+      <form className="form-container" onSubmit={addContact}>
+        <input
+          type="text"
+          placeholder="Nombre"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+        />
+
+        <input
+          type="text"
+          placeholder="Apellido"
+          value={apellido}
+          onChange={(e) => setApellido(e.target.value)}
+        />
+
+        <input
+          type="text"
+          placeholder="Teléfono"
+          value={telefono}
+          onChange={(e) => setTelefono(e.target.value)}
+        />
+
+        <button type="submit">Agregar Contacto</button>
+      </form>
+
+      
+      <ContactList
+        contacts={sortedContacts}
+        onDelete={deleteContact}
+        onToggleFavorite={toggleFavorite}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
